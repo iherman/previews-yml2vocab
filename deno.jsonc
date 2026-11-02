@@ -1,0 +1,18 @@
+{
+    "name": "@iherman/previews-yml2vocab",
+    "description": "Generating previews for yml2vocab related github PRs",
+    "tasks": {
+        "hidden"     : "(cd hidden; yml2vocab -c)",
+        "jsr-hidden" : "(cd hidden; deno run -A jsr:@iherman/yml2vocab/cli -c)",
+        "di"         : "(cd di; yml2vocab)",
+        "jsr-di"     : "(cd di; deno run -A jsr:@iherman/yml2vocab/cli)",
+        "did"        : "(cd did; yml2vocab -c)",
+        "jsr-did"    : "(cd did; deno run -A jsr:@iherman/yml2vocab/cli -c)",
+        "re"         : "(cd re; yml2vocab -c)",
+        "jsr-re"     : "(cd re; deno run -A jsr:@iherman/yml2vocab/cli -c)",
+        "sl"         : "(cd sl; yml2vocab -c)",
+        "jsr-sl"     : "(cd sl; deno run -A jsr:@iherman/yml2vocab/cli -c)",
+        "vcdm"       : "(cd sl; yml2vocab -c)",
+        "jsr-vcdm"   : "(cd sl; deno run -A jsr:@iherman/yml2vocab/cli -c)",
+    }
+}
