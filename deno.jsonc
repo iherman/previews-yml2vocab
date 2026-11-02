@@ -2,6 +2,7 @@
     "name": "@iherman/previews-yml2vocab",
     "description": "Generating previews for yml2vocab related github PRs",
     "tasks": {
+        "update"     : "deno -r jsr:@iherman/yml2vocab",
         "hidden"     : "(cd hidden; yml2vocab -c)",
         "jsr-hidden" : "(cd hidden; deno run -A jsr:@iherman/yml2vocab/cli -c)",
         "di"         : "(cd di; yml2vocab)",
