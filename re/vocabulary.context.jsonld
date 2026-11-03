@@ -18,6 +18,10 @@
                 "recognizedIn": {
                     "@id": "https://www.w3.org/ns/credentials/recognized-entities#recognizedIn",
                     "@type": "@id"
+                },
+                "registration": {
+                    "@id": "https://www.w3.org/ns/credentials/recognized-entities#registration",
+                    "@type": "@id"
                 }
             }
         },

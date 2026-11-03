@@ -16,7 +16,7 @@ re: a owl:Ontology ;
     dc:title """Recognized Entities Vocabulary"""@en ;
     dc:description """RDFS [[rdf-schema]] defined by the [[[?vc-recognized-entities]]] [[?vc-recognized-entities]] specification."""^^rdf:HTML ;
     rdfs:seeAlso <https://www.w3.org/TR/vc-recognized-entities/> ;
-    dc:date "2026-11-02"^^xsd:date ;
+    dc:date "2026-11-03"^^xsd:date ;
 .
 
 # Property definitions
@@ -35,6 +35,13 @@ re:recognizedIn a rdf:Property, owl:ObjectProperty ;
     rdfs:label "Recognized in" ;
     rdfs:comment """<div>Refer to the <a href="#RecognizedAction">Recognized Action</a>.</div>"""^^rdf:HTML ;
     rdfs:isDefinedBy <https://www.w3.org/TR/vc-recognized-entities/#dfn-recognizedin>, <https://www.w3.org/ns/credentials/recognized-entities#> ;
+    vs:term_status "stable" ;
+.
+
+re:registration a rdf:Property, owl:ObjectProperty ;
+    rdfs:domain re:RecognizedEntity ;
+    rdfs:label "Registration" ;
+    rdfs:isDefinedBy <https://www.w3.org/TR/vc-recognized-entities/#dfn-Registration>, <https://www.w3.org/ns/credentials/recognized-entities#> ;
     vs:term_status "stable" ;
 .
 
@@ -118,6 +125,7 @@ re:ExternalEntityList a rdfs:Class ;
         re:recognizedBy,
         re:recognizedIn,
         re:recognizedTo,
+        re:registration,
         sch:description,
         sch:image,
         sch:legalName,

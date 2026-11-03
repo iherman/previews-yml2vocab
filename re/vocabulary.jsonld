@@ -64,7 +64,7 @@
             "@type": "http://www.w3.org/1999/02/22-rdf-syntax-ns#HTML"
         },
         "rdfs:seeAlso": "https://www.w3.org/TR/vc-recognized-entities/",
-        "dc:date": "2026-11-02"
+        "dc:date": "2026-11-03"
     }, {
         "@id": "re:recognizedTo",
         "@type": ["rdf:Property", "owl:ObjectProperty"],
@@ -94,6 +94,13 @@
             "@type": "http://www.w3.org/1999/02/22-rdf-syntax-ns#HTML"
         },
         "rdfs:isDefinedBy": ["https://www.w3.org/TR/vc-recognized-entities/#dfn-recognizedin", "https://www.w3.org/ns/credentials/recognized-entities#"],
+        "vs:term_status": "stable"
+    }, {
+        "@id": "re:registration",
+        "@type": ["rdf:Property", "owl:ObjectProperty"],
+        "rdfs:domain": "re:RecognizedEntity",
+        "rdfs:label": "Registration",
+        "rdfs:isDefinedBy": ["https://www.w3.org/TR/vc-recognized-entities/#dfn-Registration", "https://www.w3.org/ns/credentials/recognized-entities#"],
         "vs:term_status": "stable"
     }, {
         "@id": "re:action",
@@ -179,6 +186,6 @@
     }, {
         "@id": "https://www.w3.org/ns/credentials/recognized-entities/v1",
         "@type": "jsonld:Context",
-        "mentions": ["cred:credentialSubject", "cred:issuer", "cred:validFrom", "cred:validUntil", "re:ExternalEntityList", "re:RecognizedAction", "re:RecognizedEntity", "re:RecognizedEntityCredential", "re:RecognizedIssuer", "re:action", "re:outputValidation", "re:recognizedBy", "re:recognizedIn", "re:recognizedTo", "sch:description", "sch:image", "sch:legalName", "sch:name", "sch:sameAs", "sch:url", "sec:digestMultibase"]
+        "mentions": ["cred:credentialSubject", "cred:issuer", "cred:validFrom", "cred:validUntil", "re:ExternalEntityList", "re:RecognizedAction", "re:RecognizedEntity", "re:RecognizedEntityCredential", "re:RecognizedIssuer", "re:action", "re:outputValidation", "re:recognizedBy", "re:recognizedIn", "re:recognizedTo", "re:registration", "sch:description", "sch:image", "sch:legalName", "sch:name", "sch:sameAs", "sch:url", "sec:digestMultibase"]
     }]
 }

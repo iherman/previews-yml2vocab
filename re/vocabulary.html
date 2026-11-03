@@ -145,7 +145,7 @@
         </p>
         <dl>
             <dt>Published:</dt>
-            <dd><time property="dc:date" id="time">2026-11-02</time></dd>
+            <dd><time property="dc:date" id="time">2026-11-03</time></dd>
             <dt>Version Info:</dt>
             <dd>1.0</dd>
             <dt id="see_also">See Also: <a href="https://www.w3.org/TR/vc-recognized-entities/">https://www.w3.org/TR/vc-recognized-entities/</a></dt>
@@ -225,6 +225,7 @@
                         <li><a href="#recognizedBy"><code>recognizedBy<code></code></code></a></li>
                         <li><a href="#recognizedIn"><code>recognizedIn<code></code></code></a></li>
                         <li><a href="#recognizedTo"><code>recognizedTo<code></code></code></a></li>
+                        <li><a href="#registration"><code>registration<code></code></code></a></li>
                         <li><a href="#2b7079413f75cd55cc9e96a1d5022b16150f802784f25b95006fbfc735e79166"><code>description<code></code></code></a></li>
                         <li><a href="#28077f08467860058d9d1ef016c58f855c67cc1bfa9ed1296dc8e88cd88e371f"><code>image<code></code></code></a></li>
                         <li><a href="#c9e83cbb810c0d7816132f999bdfef046010c84109f18bcf7f30ea28fae17e1d"><code>legalName<code></code></code></a></li>
@@ -251,7 +252,7 @@
                 <div>An entity that is recognized in a <a href="#RecognizedEntityCredential">Recognized Entity Credential</a> to perform a specific action.</div>
                 <dl class="terms">
                     <dt>Domain of:</dt>
-                    <dd><a href="#recognizedTo"><code>recognizedTo</code></a></dd>
+                    <dd><a href="#recognizedTo"><code>recognizedTo</code></a>, <a href="#registration"><code>registration</code></a></dd>
                     <dt>In the domain of:</dt>
                     <dd><a href="#recognizedIn"><code>recognizedIn</code></a></dd>
                 </dl>
@@ -478,6 +479,20 @@
                     <dt>Range:</dt>
                     <dd><a href="#ExternalEntityList"><code>ExternalEntityList</code></a> ⊔&nbsp;<a href="#RecognizedEntityCredential"><code>RecognizedEntityCredential</code></a>
                     </dd>
+                </dl>
+                <dl class="terms">
+                    <dt>Relevant <code>@context</code>:</dt>
+                    <dd><a href="https://www.w3.org/ns/credentials/recognized-entities/v1"><code>https://www.w3.org/ns/credentials/recognized-entities/v1</code></a></dd>
+                </dl>
+            </section>
+            <section id="registration">
+                <h4><code>registration</code></h4>
+                <p><em>Registration</em></p>
+                <p>See the <a href="https://www.w3.org/TR/vc-recognized-entities/#dfn-Registration">formal definition of the term</a>.</p>
+                <p>The property's value should be a URL, i.e., not a literal.</p>
+                <dl class="terms">
+                    <dt>Domain:</dt>
+                    <dd><a href="#RecognizedEntity"><code>RecognizedEntity</code></a></dd>
                 </dl>
                 <dl class="terms">
                     <dt>Relevant <code>@context</code>:</dt>
