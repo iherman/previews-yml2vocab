@@ -1,0 +1,103 @@
+{
+    "@context": {
+        "@protected": true,
+        "BitstringStatusList": {
+            "@id": "https://www.w3.org/ns/credentials/status#BitstringStatusList",
+            "@context": {
+                "@protected": true,
+                "statusPurpose": {
+                    "@id": "https://www.w3.org/ns/credentials/status#statusPurpose",
+                    "@type": "http://www.w3.org/2001/XMLSchema#string"
+                },
+                "encodedList": "https://www.w3.org/ns/credentials/status#encodedList",
+                "ttl": {
+                    "@id": "https://www.w3.org/ns/credentials/status#ttl",
+                    "@type": "http://www.w3.org/2001/XMLSchema#string"
+                }
+            }
+        },
+        "BitstringStatusListEntry": {
+            "@id": "https://www.w3.org/ns/credentials/status#BitstringStatusListEntry",
+            "@context": {
+                "@protected": true,
+                "statusPurpose": {
+                    "@id": "https://www.w3.org/ns/credentials/status#statusPurpose",
+                    "@type": "http://www.w3.org/2001/XMLSchema#string"
+                },
+                "statusListIndex": {
+                    "@id": "https://www.w3.org/ns/credentials/status#statusListIndex",
+                    "@type": "http://www.w3.org/2001/XMLSchema#nonNegativeInteger"
+                },
+                "statusListCredential": {
+                    "@id": "https://www.w3.org/ns/credentials/status#statusListCredential",
+                    "@type": "@id"
+                },
+                "statusSize": {
+                    "@id": "https://www.w3.org/ns/credentials/status#statusSize",
+                    "@type": "http://www.w3.org/2001/XMLSchema#positiveInteger"
+                },
+                "statusMessage": {
+                    "@id": "https://www.w3.org/ns/credentials/status#statusMessage",
+                    "@type": "@id"
+                },
+                "statusReference": {
+                    "@id": "https://www.w3.org/ns/credentials/status#statusReference",
+                    "@type": "@id"
+                }
+            }
+        },
+        "BitstringStatusListCredential": "https://www.w3.org/ns/credentials/status#BitstringStatusListCredential",
+        "BitstringStatusMessage": {
+            "@id": "https://www.w3.org/ns/credentials/status#BitstringStatusMessage",
+            "@context": {
+                "@protected": true,
+                "status": {
+                    "@id": "https://www.w3.org/ns/credentials/status#status",
+                    "@type": "http://www.w3.org/2001/XMLSchema#string"
+                },
+                "message": {
+                    "@id": "https://www.w3.org/ns/credentials/status#message",
+                    "@type": "http://www.w3.org/2001/XMLSchema#string"
+                }
+            }
+        },
+        "TerseBitstringStatusListEntry": {
+            "@id": "https://www.w3.org/ns/credentials/status#TerseBitstringStatusListEntry",
+            "@context": {
+                "@protected": true,
+                "statusPurpose": {
+                    "@id": "https://www.w3.org/ns/credentials/status#statusPurpose",
+                    "@type": "http://www.w3.org/2001/XMLSchema#string"
+                },
+                "statusListIndex": {
+                    "@id": "https://www.w3.org/ns/credentials/status#statusListIndex",
+                    "@type": "http://www.w3.org/2001/XMLSchema#nonNegativeInteger"
+                },
+                "statusListCredential": {
+                    "@id": "https://www.w3.org/ns/credentials/status#statusListCredential",
+                    "@type": "@id"
+                },
+                "statusSize": {
+                    "@id": "https://www.w3.org/ns/credentials/status#statusSize",
+                    "@type": "http://www.w3.org/2001/XMLSchema#positiveInteger"
+                },
+                "statusMessage": {
+                    "@id": "https://www.w3.org/ns/credentials/status#statusMessage",
+                    "@type": "@id"
+                },
+                "statusReference": {
+                    "@id": "https://www.w3.org/ns/credentials/status#statusReference",
+                    "@type": "@id"
+                },
+                "terseStatusListBaseUrl": {
+                    "@id": "https://www.w3.org/ns/credentials/status#terseStatusListBaseUrl",
+                    "@type": "@id"
+                },
+                "terseStatusListIndex": {
+                    "@id": "https://www.w3.org/ns/credentials/status#terseStatusListIndex",
+                    "@type": "http://www.w3.org/2001/XMLSchema#unsignedInt"
+                }
+            }
+        }
+    }
+}

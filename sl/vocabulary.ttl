@@ -12,42 +12,42 @@
 
 # Ontology definition
 cs: a owl:Ontology ;
-    dc:title """Bitstring Status List Vocabulary"""@en ;
-    dc:description """RDFS [[RDF-SCHEMA]] vocabulary used by the [[[VC-BITSTRING-STATUS-LIST]]] [[VC-BITSTRING-STATUS-LIST]]"""@en ;
-    rdfs:seeAlso <https://www.w3.org/TR/vc-bitstring-status-list/> ;
-    dc:date "2024-03-28"^^xsd:date ;
+    dc:title """Bitstring Status List Vocabulary v1.1"""@en ;
+    dc:description """RDFS [[RDF-SCHEMA]] vocabulary used by the [[[VC-BITSTRING-STATUS-LIST-1.1]]] [[VC-BITSTRING-STATUS-LIST-1.1]]"""^^rdf:HTML ;
+    rdfs:seeAlso <https://www.w3.org/TR/vc-bitstring-status-list-1.1/> ;
+    dc:date "2026-11-04"^^xsd:date ;
 .
 
 # Property definitions
 cs:statusPurpose a rdf:Property, owl:DatatypeProperty ;
-    rdfs:domain [ owl:unionOf (cs:BitstringStatusList cs:BitstringStatusListEntry) ] ;
+    rdfs:domain [ a owl:Class; owl:unionOf (cs:BitstringStatusList cs:BitstringStatusListEntry cs:TerseBitstringStatusListEntry) ] ;
     rdfs:range xsd:string ;
-    rdfs:label "Status purpose" ;
-    rdfs:isDefinedBy <https://www.w3.org/TR/vc-bitstring-status-list/#statusPurpose>, <https://www.w3.org/ns/credentials/status#> ;
+    rdfs:label "The purpose of the status list" ;
+    rdfs:isDefinedBy <https://www.w3.org/TR/vc-bitstring-status-list-1.1/#statusPurpose>, <https://www.w3.org/ns/credentials/status#> ;
     vs:term_status "stable" ;
 .
 
 cs:statusListIndex a rdf:Property, owl:DatatypeProperty ;
-    rdfs:domain cs:BitstringStatusListEntry ;
-    rdfs:range xsd:string ;
-    rdfs:label "Status list index" ;
-    rdfs:isDefinedBy <https://www.w3.org/TR/vc-bitstring-status-list/#statusListIndex>, <https://www.w3.org/ns/credentials/status#> ;
+    rdfs:domain [ a owl:Class; owl:unionOf (cs:BitstringStatusListEntry cs:TerseBitstringStatusListEntry) ] ;
+    rdfs:range xsd:nonNegativeInteger ;
+    rdfs:label "The position of the entry in the status list" ;
+    rdfs:isDefinedBy <https://www.w3.org/TR/vc-bitstring-status-list-1.1/#statusListIndex>, <https://www.w3.org/ns/credentials/status#> ;
     vs:term_status "stable" ;
 .
 
-cs:statusListCredential a rdf:Property ;
-    rdfs:domain cs:BitstringStatusListEntry ;
+cs:statusListCredential a rdf:Property, owl:ObjectProperty ;
+    rdfs:domain [ a owl:Class; owl:unionOf (cs:BitstringStatusListEntry cs:TerseBitstringStatusListEntry) ] ;
     rdfs:range cs:BitstringStatusListCredential ;
-    rdfs:label "Status list credential" ;
-    rdfs:isDefinedBy <https://www.w3.org/TR/vc-bitstring-status-list/#statusListCredential>, <https://www.w3.org/ns/credentials/status#> ;
+    rdfs:label "The location of the status list credential" ;
+    rdfs:isDefinedBy <https://www.w3.org/TR/vc-bitstring-status-list-1.1/#statusListCredential>, <https://www.w3.org/ns/credentials/status#> ;
     vs:term_status "stable" ;
 .
 
 cs:encodedList a rdf:Property ;
     rdfs:domain cs:BitstringStatusList ;
     rdfs:range sec:multibase ;
-    rdfs:label "Encoded list" ;
-    rdfs:isDefinedBy <https://www.w3.org/TR/vc-bitstring-status-list/#encodedList>, <https://www.w3.org/ns/credentials/status#> ;
+    rdfs:label "The encoded status list bitstring" ;
+    rdfs:isDefinedBy <https://www.w3.org/TR/vc-bitstring-status-list-1.1/#encodedList>, <https://www.w3.org/ns/credentials/status#> ;
     vs:term_status "stable" ;
 .
 
@@ -55,23 +55,23 @@ cs:ttl a rdf:Property, owl:DatatypeProperty ;
     rdfs:domain cs:BitstringStatusList ;
     rdfs:range xsd:string ;
     rdfs:label "Time to live in milliseconds" ;
-    rdfs:isDefinedBy <https://www.w3.org/TR/vc-bitstring-status-list/#ttl>, <https://www.w3.org/ns/credentials/status#> ;
+    rdfs:isDefinedBy <https://www.w3.org/TR/vc-bitstring-status-list-1.1/#ttl>, <https://www.w3.org/ns/credentials/status#> ;
     vs:term_status "stable" ;
 .
 
 cs:statusSize a rdf:Property, owl:DatatypeProperty ;
-    rdfs:domain cs:BitstringStatusList ;
+    rdfs:domain [ a owl:Class; owl:unionOf (cs:BitstringStatusListEntry cs:TerseBitstringStatusListEntry) ] ;
     rdfs:range xsd:positiveInteger ;
     rdfs:label "Bitstring entry size in bits" ;
-    rdfs:isDefinedBy <https://www.w3.org/TR/vc-bitstring-status-list/#statusSize>, <https://www.w3.org/ns/credentials/status#> ;
+    rdfs:isDefinedBy <https://www.w3.org/TR/vc-bitstring-status-list-1.1/#statusSize>, <https://www.w3.org/ns/credentials/status#> ;
     vs:term_status "stable" ;
 .
 
-cs:statusMessage a rdf:Property ;
-    rdfs:domain cs:BitstringStatusList ;
+cs:statusMessage a rdf:Property, owl:ObjectProperty ;
+    rdfs:domain [ a owl:Class; owl:unionOf (cs:BitstringStatusListEntry cs:TerseBitstringStatusListEntry) ] ;
     rdfs:range cs:BitstringStatusMessage ;
     rdfs:label "Status message" ;
-    rdfs:isDefinedBy <https://www.w3.org/TR/vc-bitstring-status-list/#statusMessage>, <https://www.w3.org/ns/credentials/status#> ;
+    rdfs:isDefinedBy <https://www.w3.org/TR/vc-bitstring-status-list-1.1/#statusMessage>, <https://www.w3.org/ns/credentials/status#> ;
     vs:term_status "stable" ;
 .
 
@@ -79,7 +79,7 @@ cs:status a rdf:Property, owl:DatatypeProperty ;
     rdfs:domain cs:BitstringStatusMessage ;
     rdfs:range xsd:string ;
     rdfs:label "Hexadecimal value of a status message" ;
-    rdfs:isDefinedBy <https://www.w3.org/TR/vc-bitstring-status-list/#status>, <https://www.w3.org/ns/credentials/status#> ;
+    rdfs:isDefinedBy <https://www.w3.org/TR/vc-bitstring-status-list-1.1/#status>, <https://www.w3.org/ns/credentials/status#> ;
     vs:term_status "stable" ;
 .
 
@@ -87,61 +87,108 @@ cs:message a rdf:Property, owl:DatatypeProperty ;
     rdfs:domain cs:BitstringStatusMessage ;
     rdfs:range xsd:string ;
     rdfs:label "Human-readable message of a status value" ;
-    rdfs:isDefinedBy <https://www.w3.org/TR/vc-bitstring-status-list/#message>, <https://www.w3.org/ns/credentials/status#> ;
+    rdfs:isDefinedBy <https://www.w3.org/TR/vc-bitstring-status-list-1.1/#message>, <https://www.w3.org/ns/credentials/status#> ;
     vs:term_status "stable" ;
 .
 
 cs:statusReference a rdf:Property, owl:ObjectProperty ;
-    rdfs:domain cs:BitstringStatusList ;
+    rdfs:domain [ a owl:Class; owl:unionOf (cs:BitstringStatusListEntry cs:TerseBitstringStatusListEntry) ] ;
     rdfs:label "Reference documentation for status messages" ;
-    rdfs:isDefinedBy <https://www.w3.org/TR/vc-bitstring-status-list/#statusReference>, <https://www.w3.org/ns/credentials/status#> ;
+    rdfs:isDefinedBy <https://www.w3.org/TR/vc-bitstring-status-list-1.1/#statusReference>, <https://www.w3.org/ns/credentials/status#> ;
+    vs:term_status "stable" ;
+.
+
+cs:terseStatusListBaseUrl a rdf:Property, owl:ObjectProperty ;
+    rdfs:domain cs:TerseBitstringStatusListEntry ;
+    rdfs:label "Terse status list base url" ;
+    rdfs:isDefinedBy <https://www.w3.org/TR/vc-bitstring-status-list-1.1/#tersebitstringstatuslistentry>, <https://www.w3.org/ns/credentials/status#> ;
+    vs:term_status "stable" ;
+.
+
+cs:terseStatusListIndex a rdf:Property, owl:DatatypeProperty ;
+    rdfs:domain cs:TerseBitstringStatusListEntry ;
+    rdfs:range xsd:unsignedInt ;
+    rdfs:label "Terse status list index" ;
+    rdfs:isDefinedBy <https://www.w3.org/TR/vc-bitstring-status-list-1.1/#tersebitstringstatuslistentry>, <https://www.w3.org/ns/credentials/status#> ;
     vs:term_status "stable" ;
 .
 
 # Class definitions
 cs:BitstringStatusList a rdfs:Class ;
-    rdfs:label "Bitstring status list" ;
-    rdfs:isDefinedBy <https://www.w3.org/TR/vc-bitstring-status-list/#bitstringstatuslist>, <https://www.w3.org/ns/credentials/status#> ;
+    rdfs:label "Bitstring status list class" ;
+    rdfs:isDefinedBy <https://www.w3.org/TR/vc-bitstring-status-list-1.1/#bitstringstatuslist>, <https://www.w3.org/ns/credentials/status#> ;
     vs:term_status "stable" ;
 .
 
 cs:BitstringStatusListEntry a rdfs:Class ;
     rdfs:subClassOf cred:CredentialStatus ;
-    rdfs:label "Bitstring status list entry" ;
-    rdfs:isDefinedBy <https://www.w3.org/TR/vc-bitstring-status-list/#bitstringstatuslistentry>, <https://www.w3.org/ns/credentials/status#> ;
+    rdfs:label "Bitstring status list entry class" ;
+    rdfs:isDefinedBy <https://www.w3.org/TR/vc-bitstring-status-list-1.1/#bitstringstatuslistentry>, <https://www.w3.org/ns/credentials/status#> ;
     vs:term_status "stable" ;
 .
 
 cs:BitstringStatusListCredential a rdfs:Class ;
     rdfs:subClassOf cred:VerifiableCredential ;
-    rdfs:label "Bitstring status list credential" ;
-    rdfs:isDefinedBy <https://www.w3.org/TR/vc-bitstring-status-list/#bitstringstatuslistcredential>, <https://www.w3.org/ns/credentials/status#> ;
+    rdfs:label "Bitstring status list credential class" ;
+    rdfs:isDefinedBy <https://www.w3.org/TR/vc-bitstring-status-list-1.1/#bitstringstatuslistcredential>, <https://www.w3.org/ns/credentials/status#> ;
     vs:term_status "stable" ;
 .
 
 cs:BitstringStatusMessage a rdfs:Class ;
-    rdfs:label "Bitstring status message" ;
-    rdfs:isDefinedBy <https://www.w3.org/TR/vc-bitstring-status-list/#statusMessage>, <https://www.w3.org/ns/credentials/status#> ;
+    rdfs:label "Bitstring status message class" ;
+    rdfs:isDefinedBy <https://www.w3.org/TR/vc-bitstring-status-list-1.1/#statusMessage>, <https://www.w3.org/ns/credentials/status#> ;
+    vs:term_status "stable" ;
+.
+
+cs:TerseBitstringStatusListEntry a rdfs:Class ;
+    rdfs:subClassOf cred:CredentialStatus ;
+    rdfs:label "Terse bitstring status list entry" ;
+    rdfs:isDefinedBy <https://www.w3.org/TR/vc-bitstring-status-list-1.1/#tersebitstringstatuslistentry>, <https://www.w3.org/ns/credentials/status#> ;
     vs:term_status "stable" ;
 .
 
 
 
 # Context files and their mentions
-<https://www.w3.org/ns/credentials/v2> a jsonld:Context ;
+<https://www.w3.org/ns/credentials/status/v1.1r1> a jsonld:Context ;
     schema:mentions
-        cs:statusPurpose,
-        cs:statusListIndex,
-        cs:statusListCredential,
-        cs:encodedList,
-        cs:ttl,
-        cs:statusSize,
-        cs:statusMessage,
-        cs:status,
-        cs:message,
-        cs:statusReference,
         cs:BitstringStatusList,
-        cs:BitstringStatusListEntry,
         cs:BitstringStatusListCredential,
-        cs:BitstringStatusMessage ;
+        cs:BitstringStatusListEntry,
+        cs:BitstringStatusMessage,
+        cs:TerseBitstringStatusListEntry,
+        cs:encodedList,
+        cs:message,
+        cs:status,
+        cs:statusListCredential,
+        cs:statusListIndex,
+        cs:statusMessage,
+        cs:statusPurpose,
+        cs:statusReference,
+        cs:statusSize,
+        cs:terseStatusListBaseUrl,
+        cs:terseStatusListIndex,
+        cs:ttl ;
+.
+
+<https://www.w3.org/ns/credentials/v2.1> a jsonld:Context ;
+    schema:mentions
+        cs:BitstringStatusList,
+        cs:BitstringStatusListCredential,
+        cs:BitstringStatusListEntry,
+        cs:BitstringStatusMessage,
+        cs:TerseBitstringStatusListEntry,
+        cs:encodedList,
+        cs:message,
+        cs:status,
+        cs:statusListCredential,
+        cs:statusListIndex,
+        cs:statusMessage,
+        cs:statusPurpose,
+        cs:statusReference,
+        cs:statusSize,
+        cs:terseStatusListBaseUrl,
+        cs:terseStatusListIndex,
+        cs:ttl ;
+.
 

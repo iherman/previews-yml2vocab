@@ -5,7 +5,7 @@ This is a setup for the VC, DID, and PM Working Groups. Those WGs use the [yml2v
 -   [Verifiable Credentials v2.1, branch: `main`](./vcdm/index.html)
 -   [Recognizable Entities v1.0 branch: `adding-registration-to-vocab`](./re/index.html)
 -   [Security Vocabulary v2.0 branch: `main`](./di/)
--   [Bitstring Status List v1.0, branch: `main`](./sl/)
+-   [Bitstring Status List v1.0, branch: `add-TBSLE-to-vocabulary`](./sl/)
 -   [DID 1.0 v1.0, branch: `main`](./did/)
 
 ---
