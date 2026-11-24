@@ -48,8 +48,8 @@
                     "@id": "https://www.w3.org/ns/credentials/recognized-entities#recognizedBy",
                     "@type": "@id"
                 },
-                "outputValidation": {
-                    "@id": "https://www.w3.org/ns/credentials/recognized-entities#outputValidation",
+                "credentialValidator": {
+                    "@id": "https://www.w3.org/ns/credentials/recognized-entities#credentialValidator",
                     "@type": "@id"
                 }
             }
@@ -102,6 +102,7 @@
                 }
             }
         },
+        "CredentialValidator": "https://www.w3.org/ns/credentials/recognized-entities#CredentialValidator",
         "ExternalEntityList": "https://www.w3.org/ns/credentials/recognized-entities#ExternalEntityList"
     }
 }

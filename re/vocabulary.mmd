@@ -1,44 +1,53 @@
+
 %%{
-    init: {
-        "theme" : "neutral",
+     init: {
+        "theme" : "redux",
+        "layout" : "dagree",
+        "look" : "neo",
         "class": {
             "hideEmptyMembersBox": true
         }
     }
 }%%
 classDiagram
+    direction TB
+    accTitle: Recognized Entities Vocabulary
+    accDescr {
+        RDFS vocabulary used by the Recognized Entities specification, represented as a Mermaid diagram.
+    }
     class RecognizedEntity {
-        legalName : localizable string
-        image : URL
-        url : URL
-        sameAs : URL
-        name : string
-        description : string
+        registration : URL
     }
-
     class RecognizedAction {
-        action : "issue" | "verify"
+        action : string
         recognizedBy : URL
-        outputValidation : URL
+        validFrom : dateTime
+        validUntil : dateTime
     }
-
-    class RecognizedIssuer {
-        legalName : localizable string
+    class RecognizedEntityCredential {
+        legalName
         image : URL
         url : URL
         sameAs : URL
-        name : string
-        description : string
+        description
+        digestMultibase
+        validFrom : dateTime
+        validUntil : dateTime
+        name
+        issuer
+        credentialSubject
     }
+    class RecognizedIssuer {}
+    class CredentialValidator {}
+    class ExternalEntityList {}
 
-    RecognizedEntityCredential --|> cred.VerifiableCredential : rdfs.subClassOf
+
+    RecognizedEntityCredential --|> VerifiableCredential : subClassOf
 
     RecognizedEntity --> RecognizedAction : recognizedTo
-
-    RecognizedEntityCredential --> RecognizedIssuer : issuer
-    RecognizedEntityCredential --> RecognizedEntity : credentialSubject
-
     RecognizedEntity --> ExternalEntityList : recognizedIn
     RecognizedEntity --> RecognizedEntityCredential : recognizedIn
+    RecognizedAction --> CredentialValidator : credentialValidator
     RecognizedIssuer --> ExternalEntityList : recognizedIn
     RecognizedIssuer --> RecognizedEntityCredential : recognizedIn
+

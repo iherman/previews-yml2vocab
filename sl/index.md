@@ -6,4 +6,4 @@
 - [Generated context file](./vocabulary.context.jsonld)
 - [Generated mermaid file](./vocabulary.mmd)
 
-Latest change: 2026-11-04
+Latest change: 2026-11-24

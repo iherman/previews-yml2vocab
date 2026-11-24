@@ -16,7 +16,7 @@ re: a owl:Ontology ;
     dc:title """Recognized Entities Vocabulary"""@en ;
     dc:description """RDFS [[rdf-schema]] defined by the [[[?vc-recognized-entities]]] [[?vc-recognized-entities]] specification."""^^rdf:HTML ;
     rdfs:seeAlso <https://www.w3.org/TR/vc-recognized-entities/> ;
-    dc:date "2026-11-03"^^xsd:date ;
+    dc:date "2026-11-24"^^xsd:date ;
 .
 
 # Property definitions
@@ -57,16 +57,17 @@ re:action a rdf:Property, owl:DatatypeProperty ;
 re:recognizedBy a rdf:Property, owl:ObjectProperty ;
     rdfs:domain re:RecognizedAction ;
     rdfs:label "Recognized by" ;
-    rdfs:comment """<div>The <a href="#RecognizedEntityCredential">Recognized Entity Credential</a> that performed the task of recognizing.</div>"""^^rdf:HTML ;
+    rdfs:comment """<div>The entity that performed the task of recognizing.</div>"""^^rdf:HTML ;
     rdfs:isDefinedBy <https://www.w3.org/TR/vc-recognized-entities/#dfn-recognizedby>, <https://www.w3.org/ns/credentials/recognized-entities#> ;
     vs:term_status "stable" ;
 .
 
-re:outputValidation a rdf:Property, owl:ObjectProperty ;
+re:credentialValidator a rdf:Property, owl:ObjectProperty ;
     rdfs:domain re:RecognizedAction ;
-    rdfs:label "Output validation" ;
-    rdfs:comment """<div>Refers to a data schema that provides verifiers with enough information to determine whether the provided data conforms to the provided schema (e.g., JSON Schema).</div>"""^^rdf:HTML ;
-    rdfs:isDefinedBy <https://www.w3.org/TR/vc-recognized-entities/#dfn-outputvalidation>, <https://www.w3.org/ns/credentials/recognized-entities#> ;
+    rdfs:range re:CredentialValidator ;
+    rdfs:label "Credential validator" ;
+    rdfs:comment """<div>One or more <a href="#CredentialValidator">Credential Validators</a> that provide verifiers with enough information to determine whether a verifiable credential produced by a <a href="#RecognizedEntity">Recognized Entity</a> meets the constraints of the recognizing authority.</div>"""^^rdf:HTML ;
+    rdfs:isDefinedBy <https://www.w3.org/TR/vc-recognized-entities/#dfn-credentialvalidator>, <https://www.w3.org/ns/credentials/recognized-entities#> ;
     vs:term_status "stable" ;
 .
 
@@ -99,6 +100,13 @@ re:RecognizedIssuer a rdfs:Class ;
     vs:term_status "stable" ;
 .
 
+re:CredentialValidator a rdfs:Class ;
+    rdfs:label "Credential Validator" ;
+    rdfs:comment """<div>A file, identified by its URL and media type, that a verifier uses to determine whether a verifiable credential produced by a <a href="#RecognizedEntity">Recognized Entity</a> meets the constraints of the recognizing authority.</div>"""^^rdf:HTML ;
+    rdfs:isDefinedBy <https://www.w3.org/TR/vc-recognized-entities/#dfn-credential-validator>, <https://www.w3.org/ns/credentials/recognized-entities#> ;
+    vs:term_status "stable" ;
+.
+
 re:ExternalEntityList a rdfs:Class ;
     rdfs:label "External Entity List" ;
     rdfs:comment """<div>A list of external entities that are usually in a different format such as an x509 Certificate Authority List or an ETSI Trust Services List.</div>"""^^rdf:HTML ;
@@ -115,13 +123,14 @@ re:ExternalEntityList a rdfs:Class ;
         cred:issuer,
         cred:validFrom,
         cred:validUntil,
+        re:CredentialValidator,
         re:ExternalEntityList,
         re:RecognizedAction,
         re:RecognizedEntity,
         re:RecognizedEntityCredential,
         re:RecognizedIssuer,
         re:action,
-        re:outputValidation,
+        re:credentialValidator,
         re:recognizedBy,
         re:recognizedIn,
         re:recognizedTo,
