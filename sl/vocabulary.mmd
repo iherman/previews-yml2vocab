@@ -1,12 +1,20 @@
+
 %%{
-    init: {
-        "theme" : "neutral",
+     init: {
+        "theme" : "redux",
+        "layout" : "dagree",
+        "look" : "neo",
         "class": {
             "hideEmptyMembersBox": true
         }
     }
 }%%
 classDiagram
+    direction TB
+    accTitle: Bitstring Status List Vocabulary v1.1
+    accDescr {
+        RDFS vocabulary used by the VC Status List v1.1 specification, represented as a Mermaid class diagram.
+    }
     class BitstringStatusList {
         encodedList : multibase
         ttl : string

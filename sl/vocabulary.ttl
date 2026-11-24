@@ -15,7 +15,7 @@ cs: a owl:Ontology ;
     dc:title """Bitstring Status List Vocabulary v1.1"""@en ;
     dc:description """RDFS [[RDF-SCHEMA]] vocabulary used by the [[[VC-BITSTRING-STATUS-LIST-1.1]]] [[VC-BITSTRING-STATUS-LIST-1.1]]"""^^rdf:HTML ;
     rdfs:seeAlso <https://www.w3.org/TR/vc-bitstring-status-list-1.1/> ;
-    dc:date "2026-11-04"^^xsd:date ;
+    dc:date "2026-11-24"^^xsd:date ;
 .
 
 # Property definitions
