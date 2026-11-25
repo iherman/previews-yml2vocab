@@ -1,0 +1,102 @@
+
+%%{
+     init: {
+        "theme" : "redux",
+        "layout" : "dagree",
+        "look" : "neo",
+        "class": {
+            "hideEmptyMembersBox": true
+        }
+    }
+}%%
+classDiagram
+    direction LR
+    accTitle: Diagram for the Verifiable Credentials Vocabulary v2.1
+    accDescr {
+        Mermaid representation of the Vocabulary used to ensure the authenticity and integrity of
+        Verifiable Credentials and similar types of constrained digital documents using cryptography,
+        especially through the use of digital signatures and related
+        mathematical proofs. See the non-visual structure of the diagram on ./vocabulary.mmd:
+        classes on the diagram correspond to the RDFS classes, individuals, or
+        properties that are also used as individuals; connecting lines with labels represent
+        properties with ranges and domains defined in this vocabulary, and entries in the
+        class boxes correspond to properties on a class that have external resources or
+        datatypes as values.
+    }
+    class ControlledIdentifierDocument {
+        controller : URL
+    }
+    class Proof {
+        domain : string
+        challenge : string
+        proofValue : multibase
+        created : dateTime
+        nonce : string
+        expiration : dateTime
+    }
+    class ProofGraph {}
+    class VerificationMethod {
+        revoked : dateTime
+        controller : URL
+        expiration : dateTime
+    }
+    class VerificationRelationship {}
+    class DataIntegrityProof {
+        cryptosuite : cryptosuiteString
+    }
+    class Multikey {
+        publicKeyMultibase : multibase
+        secretKeyMultibase : multibase
+    }
+    class JsonWebKey {
+        publicKeyJwk : JSON
+        secretKeyJwk : JSON
+    }
+    class Ed25519VerificationKey2020 {}
+    class Ed25519Signature2020 {}
+    class ProcessingError {}
+    class authentication ["authentication (Property)"] {}
+    class assertionMethod ["assertionMethod (Property)"] {}
+    class capabilityDelegationMethod ["capabilityDelegationMethod (Property)"] {}
+    class capabilityInvocationMethod ["capabilityInvocationMethod (Property)"] {}
+    class keyAgreementMethod ["keyAgreementMethod (Property)"] {}
+    class PROOF_GENERATION_ERROR ["PROOF_GENERATION_ERROR (Individual)"] {}
+    class PROOF_VERIFICATION_ERROR ["PROOF_VERIFICATION_ERROR (Individual)"] {}
+    class PROOF_TRANSFORMATION_ERROR ["PROOF_TRANSFORMATION_ERROR (Individual)"] {}
+    class INVALID_DOMAIN_ERROR ["INVALID_DOMAIN_ERROR (Individual)"] {}
+    class INVALID_CHALLENGE_ERROR ["INVALID_CHALLENGE_ERROR (Individual)"] {}
+    class INVALID_VERIFICATION_METHOD_URL ["INVALID_VERIFICATION_METHOD_URL (Individual)"] {}
+    class INVALID_CONTROLLED_IDENTIFIER_DOCUMENT_ID ["INVALID_CONTROLLED_IDENTIFIER_DOCUMENT_ID (Individual)"] {}
+    class INVALID_CONTROLLED_IDENTIFIER_DOCUMENT ["INVALID_CONTROLLED_IDENTIFIER_DOCUMENT (Individual)"] {}
+    class INVALID_VERIFICATION_METHOD ["INVALID_VERIFICATION_METHOD (Individual)"] {}
+    class INVALID_RELATIONSHIP_FOR_VERIFICATION_METHOD ["INVALID_RELATIONSHIP_FOR_VERIFICATION_METHOD (Individual)"] {}
+
+
+    VerificationRelationship --|> Property : subClassOf
+    DataIntegrityProof --|> Proof : subClassOf
+    Multikey --|> VerificationMethod : subClassOf
+    JsonWebKey --|> VerificationMethod : subClassOf
+    Ed25519VerificationKey2020 --|> VerificationMethod : subClassOf
+    Ed25519Signature2020 --|> Proof : subClassOf
+
+    Proof --> Proof : previousProof
+    Proof --> VerificationRelationship : proofPurpose
+    authentication ..> VerificationRelationship : type
+    assertionMethod ..> VerificationRelationship : type
+    capabilityDelegationMethod ..> VerificationRelationship : type
+    capabilityInvocationMethod ..> VerificationRelationship : type
+    keyAgreementMethod ..> VerificationRelationship : type
+    PROOF_GENERATION_ERROR ..> ProcessingError : type
+    PROOF_VERIFICATION_ERROR ..> ProcessingError : type
+    PROOF_TRANSFORMATION_ERROR ..> ProcessingError : type
+    INVALID_DOMAIN_ERROR ..> ProcessingError : type
+    INVALID_CHALLENGE_ERROR ..> ProcessingError : type
+    INVALID_VERIFICATION_METHOD_URL ..> ProcessingError : type
+    INVALID_CONTROLLED_IDENTIFIER_DOCUMENT_ID ..> ProcessingError : type
+    INVALID_CONTROLLED_IDENTIFIER_DOCUMENT ..> ProcessingError : type
+    INVALID_VERIFICATION_METHOD ..> ProcessingError : type
+    INVALID_RELATIONSHIP_FOR_VERIFICATION_METHOD ..> ProcessingError : type
+
+    ProofGraph ..> Proof : graph containment
+    AnyResource --> ProofGraph : proof
+    style AnyResource fill:white,stroke:#f66,stroke-width:2px,stroke-dasharray: 5 5
