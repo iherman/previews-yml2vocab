@@ -12,6 +12,8 @@
         "jsr-re"     : "(cd re; deno run -A jsr:@iherman/yml2vocab/cli -cm)",
         "sl"         : "(cd sl; yml2vocab -cm)",
         "jsr-sl"     : "(cd sl; deno run -A jsr:@iherman/yml2vocab/cli -cm)",
+        "fd"         : "(cd fd; yml2vocab -cm)",
+        "jsr-fd"     : "(cd fd; deno run -A jsr:@iherman/yml2vocab/cli -cm)",
         "vcdm"       : "(cd sl; yml2vocab -c)",
         "jsr-vcdm"   : "(cd sl; deno run -A jsr:@iherman/yml2vocab/cli -c)",
     }

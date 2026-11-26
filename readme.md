@@ -7,6 +7,7 @@ This is a setup for the VC, DID, and PM Working Groups. Those WGs use the [yml2v
 -   [Recognizable Entities v1.0 branch: `vocabulary-mermaid-diagram-generated`](./re/)
 -   [Security Vocabulary v2.0 branch: `main`](./di/)
 -   [Bitstring Status List v1.0, branch: `add-TBSLE-to-vocabulary`](./sl/)
+-   [Forgery Defense v1.0, branch: `set-up-a-vocabulary`](./fd/)
 -   [DID 1.0 v1.0, branch: `main`](./did/)
 
 ---
