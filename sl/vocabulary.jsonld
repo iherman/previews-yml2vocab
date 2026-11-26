@@ -63,7 +63,7 @@
             "@type": "http://www.w3.org/1999/02/22-rdf-syntax-ns#HTML"
         },
         "rdfs:seeAlso": "https://www.w3.org/TR/vc-bitstring-status-list-1.1/",
-        "dc:date": "2026-11-25"
+        "dc:date": "2026-11-26"
     }, {
         "@id": "cs:statusPurpose",
         "@type": ["rdf:Property", "owl:DatatypeProperty"],
@@ -210,7 +210,7 @@
         "rdfs:isDefinedBy": ["https://www.w3.org/TR/vc-bitstring-status-list-1.1/#tersebitstringstatuslistentry", "https://www.w3.org/ns/credentials/status#"],
         "vs:term_status": "stable"
     }, {
-        "@id": "https://www.w3.org/ns/credentials/status/v1.1r1",
+        "@id": "https://www.w3.org/ns/credentials/status/v1.1rc1",
         "@type": "jsonld:Context",
         "mentions": ["cs:BitstringStatusList", "cs:BitstringStatusListCredential", "cs:BitstringStatusListEntry", "cs:BitstringStatusMessage", "cs:TerseBitstringStatusListEntry", "cs:encodedList", "cs:message", "cs:status", "cs:statusListCredential", "cs:statusListIndex", "cs:statusMessage", "cs:statusPurpose", "cs:statusReference", "cs:statusSize", "cs:terseStatusListBaseUrl", "cs:terseStatusListIndex", "cs:ttl"]
     }, {

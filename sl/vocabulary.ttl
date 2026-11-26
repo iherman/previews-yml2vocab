@@ -15,7 +15,7 @@ cs: a owl:Ontology ;
     dc:title """Bitstring Status List Vocabulary v1.1"""@en ;
     dc:description """RDFS [[RDF-SCHEMA]] vocabulary used by the [[[VC-BITSTRING-STATUS-LIST-1.1]]] [[VC-BITSTRING-STATUS-LIST-1.1]]"""^^rdf:HTML ;
     rdfs:seeAlso <https://www.w3.org/TR/vc-bitstring-status-list-1.1/> ;
-    dc:date "2026-11-25"^^xsd:date ;
+    dc:date "2026-11-26"^^xsd:date ;
 .
 
 # Property definitions
@@ -150,7 +150,7 @@ cs:TerseBitstringStatusListEntry a rdfs:Class ;
 
 
 # Context files and their mentions
-<https://www.w3.org/ns/credentials/status/v1.1r1> a jsonld:Context ;
+<https://www.w3.org/ns/credentials/status/v1.1rc1> a jsonld:Context ;
     schema:mentions
         cs:BitstringStatusList,
         cs:BitstringStatusListCredential,
