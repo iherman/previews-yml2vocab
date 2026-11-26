@@ -1,0 +1,47 @@
+{
+    "@context": {
+        "@protected": true,
+        "WitnessListCredential": {
+            "@id": "https://www.w3.org/ns/credentials/forgeryDefense#WitnessListCredential",
+            "@context": {
+                "@protected": true,
+                "credentialSubject": {
+                    "@id": "https://w3.org/2018/credentials#credentialSubject",
+                    "@context": {
+                        "@protected": true,
+                        "witnessSeed": {
+                            "@id": "https://www.w3.org/ns/credentials/forgeryDefense#witnessSeed",
+                            "@type": "http://www.w3.org/2001/XMLSchema#string"
+                        },
+                        "witnessLength": {
+                            "@id": "https://www.w3.org/ns/credentials/forgeryDefense#witnessLength",
+                            "@type": "http://www.w3.org/2001/XMLSchema#positiveInteger"
+                        },
+                        "witnessCount": {
+                            "@id": "https://www.w3.org/ns/credentials/forgeryDefense#witnessCount",
+                            "@type": "http://www.w3.org/2001/XMLSchema#positiveInteger"
+                        },
+                        "encodedWitnesses": {
+                            "@id": "https://www.w3.org/ns/credentials/forgeryDefense#encodedWitnesses",
+                            "@type": "https://w3id.org/security#multibase"
+                        }
+                    }
+                }
+            }
+        },
+        "WitnessListEntry": {
+            "@id": "https://www.w3.org/ns/credentials/forgeryDefense#WitnessListEntry",
+            "@context": {
+                "@protected": true,
+                "witnessListCredential": {
+                    "@id": "https://www.w3.org/ns/credentials/forgeryDefense#witnessListCredential",
+                    "@type": "@id"
+                },
+                "witnessIndex": {
+                    "@id": "https://www.w3.org/ns/credentials/forgeryDefense#witnessIndex",
+                    "@type": "http://www.w3.org/2001/XMLSchema#positiveInteger"
+                }
+            }
+        }
+    }
+}

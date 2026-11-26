@@ -1,0 +1,107 @@
+@prefix fd: <https://www.w3.org/ns/credentials/forgeryDefense#> .
+@prefix cred: <https://w3.org/2018/credentials#> .
+@prefix sec: <https://w3id.org/security#> .
+@prefix dc: <http://purl.org/dc/terms/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix vs: <http://www.w3.org/2003/06/sw-vocab-status/ns#> .
+@prefix schema: <http://schema.org/> .
+@prefix jsonld: <http://www.w3.org/ns/json-ld#> .
+
+# Ontology definition
+fd: a owl:Ontology ;
+    dc:title """VC Forgery Defense Vocabulary v1.1"""@en ;
+    dc:description """RDFS [[RDF-SCHEMA]] vocabulary used by the [[[vc-forgery-defense-1.0]]] [[vc-forgery-defense-1.0]]"""^^rdf:HTML ;
+    rdfs:seeAlso <https://www.w3.org/TR/vc-forgery-defense-1.0/> ;
+    dc:date "2026-11-26"^^xsd:date ;
+.
+
+# Property definitions
+fd:witnessSeed a rdf:Property, owl:DatatypeProperty ;
+    rdfs:domain fd:WitnessList ;
+    rdfs:range xsd:string ;
+    rdfs:label "Witness seed" ;
+    rdfs:isDefinedBy <https://www.w3.org/TR/vc-forgery-defense-1.0/#witness-list-properties>, <https://www.w3.org/ns/credentials/forgeryDefense#> ;
+    vs:term_status "stable" ;
+.
+
+fd:witnessLength a rdf:Property, owl:DatatypeProperty ;
+    rdfs:domain fd:WitnessList ;
+    rdfs:range xsd:positiveInteger ;
+    rdfs:label "Witness witness" ;
+    rdfs:isDefinedBy <https://www.w3.org/TR/vc-forgery-defense-1.0/#witness-list-properties>, <https://www.w3.org/ns/credentials/forgeryDefense#> ;
+    vs:term_status "stable" ;
+.
+
+fd:witnessCount a rdf:Property, owl:DatatypeProperty ;
+    rdfs:domain fd:WitnessList ;
+    rdfs:range xsd:positiveInteger ;
+    rdfs:label "Witness count" ;
+    rdfs:isDefinedBy <https://www.w3.org/TR/vc-forgery-defense-1.0/#witness-list-properties>, <https://www.w3.org/ns/credentials/forgeryDefense#> ;
+    vs:term_status "stable" ;
+.
+
+fd:encodedWitnesses a rdf:Property, owl:DatatypeProperty ;
+    rdfs:domain fd:WitnessList ;
+    rdfs:range sec:multibase ;
+    rdfs:label "Encoded witnesses" ;
+    rdfs:isDefinedBy <https://www.w3.org/TR/vc-forgery-defense-1.0/#witness-list-properties>, <https://www.w3.org/ns/credentials/forgeryDefense#> ;
+    vs:term_status "stable" ;
+.
+
+fd:witnessListCredential a rdf:Property, owl:ObjectProperty ;
+    rdfs:domain fd:WitnessListEntry ;
+    rdfs:range fd:WitnessListCredential ;
+    rdfs:label "pointer to a witness list credential" ;
+    rdfs:isDefinedBy <https://www.w3.org/TR/vc-forgery-defense-1.0/#witness-list-entry>, <https://www.w3.org/ns/credentials/forgeryDefense#> ;
+    vs:term_status "stable" ;
+.
+
+fd:witnessIndex a rdf:Property, owl:DatatypeProperty ;
+    rdfs:domain fd:WitnessListEntry ;
+    rdfs:range xsd:positiveInteger ;
+    rdfs:label "Witness index in a witness list credential" ;
+    rdfs:isDefinedBy <https://www.w3.org/TR/vc-forgery-defense-1.0/#witness-list-entry>, <https://www.w3.org/ns/credentials/forgeryDefense#> ;
+    vs:term_status "stable" ;
+.
+
+# Class definitions
+fd:WitnessListCredential a rdfs:Class ;
+    rdfs:subClassOf cred:VerifiableCredential ;
+    rdfs:label "Witness list credential class" ;
+    rdfs:isDefinedBy <https://www.w3.org/TR/vc-forgery-defense-1.0/#witness-list-credential>, <https://www.w3.org/ns/credentials/forgeryDefense#> ;
+    vs:term_status "stable" ;
+.
+
+fd:WitnessList a rdfs:Class ;
+    rdfs:label "Witness list credential subject class" ;
+    rdfs:isDefinedBy <https://www.w3.org/TR/vc-forgery-defense-1.0/#witness-list-credential>, <https://www.w3.org/ns/credentials/forgeryDefense#> ;
+    vs:term_status "stable" ;
+.
+
+fd:WitnessListEntry a rdfs:Class ;
+    rdfs:subClassOf cred:CredentialStatus ;
+    rdfs:label "Witness list credential status entry" ;
+    rdfs:isDefinedBy <https://www.w3.org/TR/vc-forgery-defense-1.0/#witness-list-entry>, <https://www.w3.org/ns/credentials/forgeryDefense#> ;
+    vs:term_status "stable" ;
+.
+
+
+
+# Definitions of datatypes
+# Context files and their mentions
+<https://www.w3.org/ns/credentials/forgeryDefense/v1.0rc1> a jsonld:Context ;
+    schema:mentions
+        cred:credentialSubject,
+        fd:WitnessListCredential,
+        fd:WitnessListEntry,
+        fd:encodedWitnesses,
+        fd:witnessCount,
+        fd:witnessIndex,
+        fd:witnessLength,
+        fd:witnessListCredential,
+        fd:witnessSeed ;
+.
+

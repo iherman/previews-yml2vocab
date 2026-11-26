@@ -1,0 +1,461 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <title>VC Forgery Defense Vocabulary v1.1</title>
+    <script class="remove" src="https://www.w3.org/Tools/respec/respec-w3c"></script>
+    <script class="remove" src="https://cdn.jsdelivr.net/gh/w3c/respec-mermaid@1.3.0/dist/main.js"></script>
+    <script>
+        function remove_status_remark() {
+            const sotd = document.getElementById("sotd");
+            const p = sotd.getElementsByTagName('p')[0];
+            sotd.removeChild(p);
+        }
+
+        function manipulateHiddenSections() {
+            // Find all 'section' elements with class 'hidden'
+            const hiddenSections = document.querySelectorAll('section.hidden');
+
+            // Loop through each hidden section
+            hiddenSections.forEach(section => {
+                // Retrieve the value of the 'id' attribute
+                const sectionId = section.id;
+
+                // Find the 'a' element in the section that starts with "This term is formally defined in another vocabulary"
+                const aElement = Array.from(section.querySelectorAll('a')).find(a => {
+                    const textContent = a.parentElement.textContent.trim();
+                    return textContent.startsWith("This term is formally defined in another vocabulary");
+                });
+
+                // Retrieve the 'href' value if the 'a' element was found
+                const ohref = aElement ? aElement.href : null;
+
+                // Find all 'a' elements that refer to this 'id' value
+                const aElementsToReplace = document.querySelectorAll(`a[href="#${sectionId}"]`);
+
+                // Loop through each 'a' element to replace
+                aElementsToReplace.forEach(a => {
+                    if (ohref) {
+                        // Replace the 'href' attribute with 'ohref'
+                        a.href = ohref;
+                    } else {
+                        // Replace the 'a' element with a 'span' element
+                        const span = document.createElement('span');
+                        span.textContent = a.textContent;
+                        a.parentNode.replaceChild(span, a);
+                    }
+                });
+
+                // Remove the 'section' from the DOM tree
+                section.remove();
+            });
+        }
+
+    </script>
+    <script class="remove">
+        var respecConfig = {
+            specStatus: "base",
+            shortName: "ns/credentials/status",
+            thisVersion: "https://www.w3.org/ns/credentials/status/",
+            doJsonLd: true,
+            editors: [{
+                name: "Ivan Herman",
+                url: "https://www.w3.org/People/Ivan/",
+                company: "W3C",
+                w3cid: 7382,
+                orcid: "0000-0003-0782-2704",
+                companyURL: "https://www.w3.org",
+            }, {
+                name: "Wesley Smith",
+                url: "",
+                company: "Digital Bazaar",
+                companyURL: "",
+                w3cid: 152091
+            }, {
+                name: "Elaine Wooton",
+                url: "https://www.linkedin.com/in/ewootonidxqd/",
+                company: "Invited Expert",
+                w3cid: 166541
+            }, {
+                name: "Manu Sporny",
+                url: "http://manu.sporny.org/",
+                company: "Digital Bazaar",
+                companyURL: "http://digitalbazaar.com/",
+                w3cid: 41758
+            }],
+            alternateFormats: [{
+                    uri: "vocabulary.ttl",
+                    label: "Turtle"
+                },
+                {
+                    uri: "vocabulary.jsonld",
+                    label: "JSON-LD"
+                }
+            ],
+            postProcess: [remove_status_remark, window.respecMermaid.createFigures],
+            preProcess: [manipulateHiddenSections],
+            inlineCSS: true,
+            doRDFa: false,
+            noIDLIn: true,
+            noLegacyStyle: false
+        };
+
+    </script>
+    <style type="text/css">
+        dl.terms dt {
+            float: left;
+            clear: left;
+            width: 10vw;
+        }
+
+        dl.terms dd {
+            margin-left: 15vw;
+        }
+
+        dl.terms dd:after {
+            content: '';
+            display: block;
+            clear: both;
+            margin-bottom: 5px;
+        }
+
+        table.rdfs-definition td {
+            vertical-align: top;
+            margin-right: 2em;
+        }
+
+        .bold {
+            font-weight: bold;
+        }
+
+        /* code {
+        color: red;
+      } */
+
+        .term_definitions section {
+            border-bottom-style: solid;
+            border-bottom-width: 1px;
+            border-bottom-color: darkgrey;
+        }
+
+        .annoy {
+            background: hsla(40, 100%, 50%, 0.95);
+            color: black;
+            padding: .75em 1em;
+            border: red;
+            border-style: solid none;
+            box-shadow: 0 2px 8px black;
+            text-align: center;
+        }
+
+        summary {
+            font-weight: normal !important;
+        }
+
+    </style>
+    <link href="vocabulary.jsonld" rel="alternate" type="application/ld+json">
+    <link href="vocabulary.ttl" rel="alternate" type="text/turtle">
+</head>
+
+<body>
+    <section id="abstract">
+        <p>This document describes the <span property="dc:title" id="title">VC Forgery Defense Vocabulary v1.1</span>, i.e.,
+            the <span property="dc:description" id="description">RDFS [[RDF-SCHEMA]] vocabulary used by the [[[vc-forgery-defense-1.0]]] [[vc-forgery-defense-1.0]]</span>.
+        </p>
+        <p>Alternate versions of the vocabulary definition exist in
+            <a rel="alternate" id="alt-turtle" href="vocabulary.ttl">Turtle</a> and
+            <a rel="alternate" id="alt-jsonld" href="vocabulary.jsonld">JSON-LD</a>.
+        </p>
+        <dl>
+            <dt>Published:</dt>
+            <dd><time property="dc:date" id="time">2026-11-26</time></dd>
+            <dt>Version Info:</dt>
+            <dd>1.0</dd>
+            <dt id="see_also">See Also: <a href="https://www.w3.org/TR/vc-forgery-defense-1.0/">https://www.w3.org/TR/vc-forgery-defense-1.0/</a></dt>
+        </dl>
+    </section>
+    <section id="sotd">
+        <p>
+            This vocabulary has been defined by the
+            <a href="https://www.w3.org/2017/vc/WG/">
+                W3C Verifiable Credentials Working Group</a> and provides the official RDFS
+            vocabulary for
+            <a href="https://www.w3.org/TR/vc-forgery-defense-1.0/">
+                Verifiable Credential Forgery Defensev1.0</a>. Comments regarding this document are welcome.
+            Please file issues directly on
+            <a href="https://github.com/w3c/vc-forgery-defense/issues/">GitHub</a>, or
+            send them to
+            <a href="mailto:public-vc-comments@w3.org">public-vc-comments@w3.org</a>
+            (<a href="mailto:public-vc-comments-request@w3.org?subject=subscribe">
+                subscribe</a>,
+            <a href="https://lists.w3.org/Archives/Public/public-vc-comments/">
+                archives</a>).
+        </p>
+    </section>
+    <section>
+        <h2>Specification of terms</h2>
+        <p>
+            In general, the terms — i.e., the properties and classes — used in
+            the VCDM are formally specified in Recommendation Track documents published by
+            the <a href="https://www.w3.org/groups/wg/vc">W3C Verifiable Credentials Working
+                Group</a>. In each case of such external definition, the term's description in
+            this document contains a link to the relevant specification. Additionally, the
+            `rdfs:definedBy` property in the RDFS representation(s) refers to the formal
+            specification.
+        </p>
+        <p>
+            In some cases, a local explanation is necessary to complement, or to replace,
+            the definition found in an external specification. For instance, this is so when
+            the term is needed to provide a consistent structure to the RDFS vocabulary,
+            such as when the term defines a common supertype for class instances that are
+            used as objects of specific properties. For such cases,
+            the extra definition is included in the current
+            document (and the `rdfs:comment` property is used to include them in the RDFS
+            representations).
+        </p>
+
+        <figure id="vocabulary-diagram">
+            <pre class="diagram mermaid" style="max-width:100%" data-include="./vocabulary.mmd">          </pre>
+            <figcaption>Overview diagram of the vocabulary. <br>
+                Boxes represent RDFS Classes, labeled connection lines represent RDF properties with explicit domains and ranges.
+                See the <a href="./vocabulary.mmd">mermaid source of the image</a> for a textual representation of the structure.
+            </figcaption>
+        </figure>
+    </section>
+    <section>
+        <h2>Namespaces</h2>
+        <p>This specification makes use of the following namespaces:</p>
+        <dl class="terms" id="namespaces">
+            <dt><code>fd</code></dt>
+            <dd><code>https://www.w3.org/ns/credentials/forgeryDefense#</code></dd>
+            <dt><code>cred</code></dt>
+            <dd><code>https://w3.org/2018/credentials#</code></dd>
+            <dt><code>sec</code></dt>
+            <dd><code>https://w3id.org/security#</code></dd>
+            <dt><code>dc</code></dt>
+            <dd><code>http://purl.org/dc/terms/</code></dd>
+            <dt><code>owl</code></dt>
+            <dd><code>http://www.w3.org/2002/07/owl#</code></dd>
+            <dt><code>rdf</code></dt>
+            <dd><code>http://www.w3.org/1999/02/22-rdf-syntax-ns#</code></dd>
+            <dt><code>rdfs</code></dt>
+            <dd><code>http://www.w3.org/2000/01/rdf-schema#</code></dd>
+            <dt><code>xsd</code></dt>
+            <dd><code>http://www.w3.org/2001/XMLSchema#</code></dd>
+        </dl>
+    </section>
+
+    <section>
+        <h2><code>@context</code> files</h2>
+        <p>The following <code>@context</code> files make use of the terms defined in this specification:</p>
+        <ul id="contexts">
+            <li><a href="https://www.w3.org/ns/credentials/forgeryDefense/v1.0rc1"><code>https://www.w3.org/ns/credentials/forgeryDefense/v1.0rc1</code></a>
+                <details>
+                    <summary>term list</summary>
+                    <ul>
+                        <li><a href="#e2d5b626929c13d8aa768b72420dca4808855889e4ccefb69e0aa051ce0a06b1"><code>credentialSubject<code></code></code></a></li>
+                        <li><a href="#WitnessListCredential"><code>WitnessListCredential<code></code></code></a></li>
+                        <li><a href="#WitnessListEntry"><code>WitnessListEntry<code></code></code></a></li>
+                        <li><a href="#encodedWitnesses"><code>encodedWitnesses<code></code></code></a></li>
+                        <li><a href="#witnessCount"><code>witnessCount<code></code></code></a></li>
+                        <li><a href="#witnessIndex"><code>witnessIndex<code></code></code></a></li>
+                        <li><a href="#witnessLength"><code>witnessLength<code></code></code></a></li>
+                        <li><a href="#witnessListCredential"><code>witnessListCredential<code></code></code></a></li>
+                        <li><a href="#witnessSeed"><code>witnessSeed<code></code></code></a></li>
+                    </ul>
+                </details>
+            </li>
+        </ul>
+    </section>
+
+    <section id="term_definitions">
+        <h1>Regular terms</h1>
+        <section id="property_definitions" class="term_definitions">
+            <h2>Property definitions</h2>
+            <p>The following are property definitions in the <code>fd</code> namespace.</p>
+            <section id="witnessSeed">
+                <h4><code>witnessSeed</code></h4>
+                <p><em>Witness seed</em></p>
+                <p>See the <a href="https://www.w3.org/TR/vc-forgery-defense-1.0/#witness-list-properties">formal definition of the term</a>.</p>
+                <dl class="terms">
+                    <dt>Domain:</dt>
+                    <dd><a href="#WitnessList"><code>WitnessList</code></a></dd>
+                    <dt>Range:</dt>
+                    <dd><a href="http://www.w3.org/2001/XMLSchema#string"><code>xsd:string</code></a></dd>
+                </dl>
+                <dl class="terms">
+                    <dt>Relevant <code>@context</code>:</dt>
+                    <dd><a href="https://www.w3.org/ns/credentials/forgeryDefense/v1.0rc1"><code>https://www.w3.org/ns/credentials/forgeryDefense/v1.0rc1</code></a></dd>
+                </dl>
+            </section>
+            <section id="witnessLength">
+                <h4><code>witnessLength</code></h4>
+                <p><em>Witness witness</em></p>
+                <p>See the <a href="https://www.w3.org/TR/vc-forgery-defense-1.0/#witness-list-properties">formal definition of the term</a>.</p>
+                <dl class="terms">
+                    <dt>Domain:</dt>
+                    <dd><a href="#WitnessList"><code>WitnessList</code></a></dd>
+                    <dt>Range:</dt>
+                    <dd><code>xsd:positiveInteger</code></dd>
+                </dl>
+                <dl class="terms">
+                    <dt>Relevant <code>@context</code>:</dt>
+                    <dd><a href="https://www.w3.org/ns/credentials/forgeryDefense/v1.0rc1"><code>https://www.w3.org/ns/credentials/forgeryDefense/v1.0rc1</code></a></dd>
+                </dl>
+            </section>
+            <section id="witnessCount">
+                <h4><code>witnessCount</code></h4>
+                <p><em>Witness count</em></p>
+                <p>See the <a href="https://www.w3.org/TR/vc-forgery-defense-1.0/#witness-list-properties">formal definition of the term</a>.</p>
+                <dl class="terms">
+                    <dt>Domain:</dt>
+                    <dd><a href="#WitnessList"><code>WitnessList</code></a></dd>
+                    <dt>Range:</dt>
+                    <dd><code>xsd:positiveInteger</code></dd>
+                </dl>
+                <dl class="terms">
+                    <dt>Relevant <code>@context</code>:</dt>
+                    <dd><a href="https://www.w3.org/ns/credentials/forgeryDefense/v1.0rc1"><code>https://www.w3.org/ns/credentials/forgeryDefense/v1.0rc1</code></a></dd>
+                </dl>
+            </section>
+            <section id="encodedWitnesses">
+                <h4><code>encodedWitnesses</code></h4>
+                <p><em>Encoded witnesses</em></p>
+                <p>See the <a href="https://www.w3.org/TR/vc-forgery-defense-1.0/#witness-list-properties">formal definition of the term</a>.</p>
+                <dl class="terms">
+                    <dt>Domain:</dt>
+                    <dd><a href="#WitnessList"><code>WitnessList</code></a></dd>
+                    <dt>Range:</dt>
+                    <dd><a href="#5e44586bc89350cc77a02d19f6d28e1a0af80c06a823f0482fdeb765ec0e2262"><code>multibase</code></a></dd>
+                </dl>
+                <dl class="terms">
+                    <dt>Relevant <code>@context</code>:</dt>
+                    <dd><a href="https://www.w3.org/ns/credentials/forgeryDefense/v1.0rc1"><code>https://www.w3.org/ns/credentials/forgeryDefense/v1.0rc1</code></a></dd>
+                </dl>
+            </section>
+            <section id="e2d5b626929c13d8aa768b72420dca4808855889e4ccefb69e0aa051ce0a06b1" class="hidden">
+                <h4><code>credentialSubject</code></h4>
+                <p><em>cred:credentialSubject</em></p>
+                <p>See also the <a href="https://www.w3.org/TR/vc-data-model-2.1/#credential-subject">formal definition of the term</a>.</p>
+                <p class="note">
+                    <b>This term is formally defined in another vocabulary</b>
+                    (as <a href="https://w3.org/2018/credentials#credentialSubject">cred:credentialSubject</a>), but is frequently used with this vocabulary and has been
+                    included to aid readability of this document.
+                </p>
+                <dl class="terms">
+                    <dt>Relevant <code>@context</code>:</dt>
+                    <dd><a href="https://www.w3.org/ns/credentials/forgeryDefense/v1.0rc1"><code>https://www.w3.org/ns/credentials/forgeryDefense/v1.0rc1</code></a></dd>
+                </dl>
+            </section>
+            <section id="witnessListCredential">
+                <h4><code>witnessListCredential</code></h4>
+                <p><em>pointer to a witness list credential</em></p>
+                <p>See the <a href="https://www.w3.org/TR/vc-forgery-defense-1.0/#witness-list-entry">formal definition of the term</a>.</p>
+                <dl class="terms">
+                    <dt>Domain:</dt>
+                    <dd><a href="#WitnessListEntry"><code>WitnessListEntry</code></a></dd>
+                    <dt>Range:</dt>
+                    <dd><a href="#WitnessListCredential"><code>WitnessListCredential</code></a></dd>
+                </dl>
+                <dl class="terms">
+                    <dt>Relevant <code>@context</code>:</dt>
+                    <dd><a href="https://www.w3.org/ns/credentials/forgeryDefense/v1.0rc1"><code>https://www.w3.org/ns/credentials/forgeryDefense/v1.0rc1</code></a></dd>
+                </dl>
+            </section>
+            <section id="witnessIndex">
+                <h4><code>witnessIndex</code></h4>
+                <p><em>Witness index in a witness list credential</em></p>
+                <p>See the <a href="https://www.w3.org/TR/vc-forgery-defense-1.0/#witness-list-entry">formal definition of the term</a>.</p>
+                <dl class="terms">
+                    <dt>Domain:</dt>
+                    <dd><a href="#WitnessListEntry"><code>WitnessListEntry</code></a></dd>
+                    <dt>Range:</dt>
+                    <dd><code>xsd:positiveInteger</code></dd>
+                </dl>
+                <dl class="terms">
+                    <dt>Relevant <code>@context</code>:</dt>
+                    <dd><a href="https://www.w3.org/ns/credentials/forgeryDefense/v1.0rc1"><code>https://www.w3.org/ns/credentials/forgeryDefense/v1.0rc1</code></a></dd>
+                </dl>
+            </section>
+        </section>
+
+        <section id="class_definitions" class="term_definitions">
+            <h2>Class definitions</h2>
+            <p>The following are class definitions in the <code>fd</code> namespace.</p>
+            <section id="WitnessListCredential">
+                <h4><code>WitnessListCredential</code></h4>
+                <p><em>Witness list credential class</em></p>
+                <p>See the <a href="https://www.w3.org/TR/vc-forgery-defense-1.0/#witness-list-credential">formal definition of the term</a>.</p>
+                <dl class="terms">
+                    <dt>Subclass of:</dt>
+                    <dd><a href="https://w3.org/2018/credentials#VerifiableCredential"><code>cred:VerifiableCredential</code></a></dd>
+                </dl>
+                <dl class="terms">
+                    <dt>Range of:</dt>
+                    <dd><a href="#witnessListCredential"><code>witnessListCredential</code></a></dd>
+                </dl>
+                <dl class="terms">
+                    <dt>Relevant <code>@context</code>:</dt>
+                    <dd><a href="https://www.w3.org/ns/credentials/forgeryDefense/v1.0rc1"><code>https://www.w3.org/ns/credentials/forgeryDefense/v1.0rc1</code></a></dd>
+                </dl>
+            </section>
+            <section id="WitnessList">
+                <h4><code>WitnessList</code></h4>
+                <p><em>Witness list credential subject class</em></p>
+                <p>See the <a href="https://www.w3.org/TR/vc-forgery-defense-1.0/#witness-list-credential">formal definition of the term</a>.</p>
+                <dl class="terms">
+                    <dt>Domain of:</dt>
+                    <dd><a href="#witnessSeed"><code>witnessSeed</code></a>, <a href="#witnessLength"><code>witnessLength</code></a>, <a
+                            href="#witnessCount"><code>witnessCount</code></a>, <a href="#encodedWitnesses"><code>encodedWitnesses</code></a></dd>
+                </dl>
+            </section>
+            <section id="WitnessListEntry">
+                <h4><code>WitnessListEntry</code></h4>
+                <p><em>Witness list credential status entry</em></p>
+                <p>See the <a href="https://www.w3.org/TR/vc-forgery-defense-1.0/#witness-list-entry">formal definition of the term</a>.</p>
+                <dl class="terms">
+                    <dt>Subclass of:</dt>
+                    <dd><a href="https://w3.org/2018/credentials#CredentialStatus"><code>cred:CredentialStatus</code></a></dd>
+                </dl>
+                <dl class="terms">
+                    <dt>Domain of:</dt>
+                    <dd><a href="#witnessListCredential"><code>witnessListCredential</code></a>, <a href="#witnessIndex"><code>witnessIndex</code></a></dd>
+                </dl>
+                <dl class="terms">
+                    <dt>Relevant <code>@context</code>:</dt>
+                    <dd><a href="https://www.w3.org/ns/credentials/forgeryDefense/v1.0rc1"><code>https://www.w3.org/ns/credentials/forgeryDefense/v1.0rc1</code></a></dd>
+                </dl>
+            </section>
+        </section>
+
+        <section id="datatype_definitions" class="term_definitions">
+            <h2>Datatype definitions</h2>
+            <p>The following are datatype definitions in the <code>fd</code> namespace.</p>
+            <section id="5e44586bc89350cc77a02d19f6d28e1a0af80c06a823f0482fdeb765ec0e2262">
+                <h4><code>multibase</code></h4>
+                <p><em>Datatype for multibase values</em></p>
+                <p>See also the <a href="https://www.w3.org/TR/cid-1.0/#multibase">formal definition of the term</a>.</p>
+                <p class="note">
+                    <b>This term is formally defined in another vocabulary</b>
+                    (as <a href="https://w3id.org/security#multibase">sec:multibase</a>), but is frequently used with this vocabulary and has been
+                    included to aid readability of this document.
+                </p>
+                <dl class="terms">
+                    <dt>Derived from:</dt>
+                    <dd><a href="http://www.w3.org/2001/XMLSchema#string"><code>xsd:string</code></a></dd>
+                </dl>
+                <dl class="terms">
+                    <dt>Range of:</dt>
+                    <dd><a href="#encodedWitnesses"><code>encodedWitnesses</code></a></dd>
+                </dl>
+            </section>
+        </section>
+
+
+    </section>
+
+
+</body>
+
+</html>

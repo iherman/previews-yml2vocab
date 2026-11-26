@@ -1,0 +1,140 @@
+{
+    "@context": {
+        "fd": "https://www.w3.org/ns/credentials/forgeryDefense#",
+        "cred": "https://w3.org/2018/credentials#",
+        "sec": "https://w3id.org/security#",
+        "dc": "http://purl.org/dc/terms/",
+        "owl": "http://www.w3.org/2002/07/owl#",
+        "rdf": "http://www.w3.org/1999/02/22-rdf-syntax-ns#",
+        "rdfs": "http://www.w3.org/2000/01/rdf-schema#",
+        "xsd": "http://www.w3.org/2001/XMLSchema#",
+        "vs": "http://www.w3.org/2003/06/sw-vocab-status/ns#",
+        "schema": "http://schema.org/",
+        "jsonld": "http://www.w3.org/ns/json-ld#",
+        "dc:date": {
+            "@type": "xsd:date"
+        },
+        "rdfs:domain": {
+            "@type": "@id"
+        },
+        "rdfs:range": {
+            "@type": "@id"
+        },
+        "rdfs:seeAlso": {
+            "@type": "@id"
+        },
+        "rdfs:subClassOf": {
+            "@type": "@id"
+        },
+        "rdfs:subPropertyOf": {
+            "@type": "@id"
+        },
+        "rdfs:isDefinedBy": {
+            "@type": "@id"
+        },
+        "owl:oneOf": {
+            "@container": "@list",
+            "@type": "@vocab"
+        },
+        "owl:deprecated": {
+            "@type": "xsd:boolean"
+        },
+        "owl:inverseOf": {
+            "@type": "@vocab"
+        },
+        "owl:unionOf": {
+            "@container": "@list",
+            "@type": "@vocab"
+        },
+        "mentions": {
+            "@id": "schema:mentions",
+            "@type": "@id"
+        }
+    },
+    "@included": [{
+        "@id": "https://www.w3.org/ns/credentials/forgeryDefense#",
+        "@type": "owl:Ontology",
+        "dc:title": {
+            "@value": "VC Forgery Defense Vocabulary v1.1",
+            "@language": "en"
+        },
+        "dc:description": {
+            "@value": "RDFS [[RDF-SCHEMA]] vocabulary used by the [[[vc-forgery-defense-1.0]]] [[vc-forgery-defense-1.0]]",
+            "@type": "http://www.w3.org/1999/02/22-rdf-syntax-ns#HTML"
+        },
+        "rdfs:seeAlso": "https://www.w3.org/TR/vc-forgery-defense-1.0/",
+        "dc:date": "2026-11-26"
+    }, {
+        "@id": "fd:witnessSeed",
+        "@type": ["rdf:Property", "owl:DatatypeProperty"],
+        "rdfs:domain": "fd:WitnessList",
+        "rdfs:range": "xsd:string",
+        "rdfs:label": "Witness seed",
+        "rdfs:isDefinedBy": ["https://www.w3.org/TR/vc-forgery-defense-1.0/#witness-list-properties", "https://www.w3.org/ns/credentials/forgeryDefense#"],
+        "vs:term_status": "stable"
+    }, {
+        "@id": "fd:witnessLength",
+        "@type": ["rdf:Property", "owl:DatatypeProperty"],
+        "rdfs:domain": "fd:WitnessList",
+        "rdfs:range": "xsd:positiveInteger",
+        "rdfs:label": "Witness witness",
+        "rdfs:isDefinedBy": ["https://www.w3.org/TR/vc-forgery-defense-1.0/#witness-list-properties", "https://www.w3.org/ns/credentials/forgeryDefense#"],
+        "vs:term_status": "stable"
+    }, {
+        "@id": "fd:witnessCount",
+        "@type": ["rdf:Property", "owl:DatatypeProperty"],
+        "rdfs:domain": "fd:WitnessList",
+        "rdfs:range": "xsd:positiveInteger",
+        "rdfs:label": "Witness count",
+        "rdfs:isDefinedBy": ["https://www.w3.org/TR/vc-forgery-defense-1.0/#witness-list-properties", "https://www.w3.org/ns/credentials/forgeryDefense#"],
+        "vs:term_status": "stable"
+    }, {
+        "@id": "fd:encodedWitnesses",
+        "@type": ["rdf:Property", "owl:DatatypeProperty"],
+        "rdfs:domain": "fd:WitnessList",
+        "rdfs:range": "sec:multibase",
+        "rdfs:label": "Encoded witnesses",
+        "rdfs:isDefinedBy": ["https://www.w3.org/TR/vc-forgery-defense-1.0/#witness-list-properties", "https://www.w3.org/ns/credentials/forgeryDefense#"],
+        "vs:term_status": "stable"
+    }, {
+        "@id": "fd:witnessListCredential",
+        "@type": ["rdf:Property", "owl:ObjectProperty"],
+        "rdfs:domain": "fd:WitnessListEntry",
+        "rdfs:range": "fd:WitnessListCredential",
+        "rdfs:label": "pointer to a witness list credential",
+        "rdfs:isDefinedBy": ["https://www.w3.org/TR/vc-forgery-defense-1.0/#witness-list-entry", "https://www.w3.org/ns/credentials/forgeryDefense#"],
+        "vs:term_status": "stable"
+    }, {
+        "@id": "fd:witnessIndex",
+        "@type": ["rdf:Property", "owl:DatatypeProperty"],
+        "rdfs:domain": "fd:WitnessListEntry",
+        "rdfs:range": "xsd:positiveInteger",
+        "rdfs:label": "Witness index in a witness list credential",
+        "rdfs:isDefinedBy": ["https://www.w3.org/TR/vc-forgery-defense-1.0/#witness-list-entry", "https://www.w3.org/ns/credentials/forgeryDefense#"],
+        "vs:term_status": "stable"
+    }, {
+        "@id": "fd:WitnessListCredential",
+        "@type": "rdfs:Class",
+        "rdfs:subClassOf": ["cred:VerifiableCredential"],
+        "rdfs:label": "Witness list credential class",
+        "rdfs:isDefinedBy": ["https://www.w3.org/TR/vc-forgery-defense-1.0/#witness-list-credential", "https://www.w3.org/ns/credentials/forgeryDefense#"],
+        "vs:term_status": "stable"
+    }, {
+        "@id": "fd:WitnessList",
+        "@type": "rdfs:Class",
+        "rdfs:label": "Witness list credential subject class",
+        "rdfs:isDefinedBy": ["https://www.w3.org/TR/vc-forgery-defense-1.0/#witness-list-credential", "https://www.w3.org/ns/credentials/forgeryDefense#"],
+        "vs:term_status": "stable"
+    }, {
+        "@id": "fd:WitnessListEntry",
+        "@type": "rdfs:Class",
+        "rdfs:subClassOf": ["cred:CredentialStatus"],
+        "rdfs:label": "Witness list credential status entry",
+        "rdfs:isDefinedBy": ["https://www.w3.org/TR/vc-forgery-defense-1.0/#witness-list-entry", "https://www.w3.org/ns/credentials/forgeryDefense#"],
+        "vs:term_status": "stable"
+    }, {
+        "@id": "https://www.w3.org/ns/credentials/forgeryDefense/v1.0rc1",
+        "@type": "jsonld:Context",
+        "mentions": ["cred:credentialSubject", "fd:WitnessListCredential", "fd:WitnessListEntry", "fd:encodedWitnesses", "fd:witnessCount", "fd:witnessIndex", "fd:witnessLength", "fd:witnessListCredential", "fd:witnessSeed"]
+    }]
+}

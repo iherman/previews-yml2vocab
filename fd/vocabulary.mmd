@@ -1,0 +1,41 @@
+
+%%{
+     init: {
+        "theme" : "redux",
+        "layout" : "dagree",
+        "look" : "neo",
+        "class": {
+            "hideEmptyMembersBox": true
+        }
+    }
+}%%
+classDiagram
+    direction TB
+    accTitle: VC Forgery Defense Vocabulary v1.1
+    accDescr {
+        Mermaid representation of the vocabulary, see the non-visual structure of the diagram
+        on ./vocabulary.mmd. Classes on the diagram correspond to the RDFS classes; connecting
+        lines with labels represent properties with ranges and domains defined in this vocabulary,
+        and entries in the class boxes correspond to properties on a class that have external
+        resources or datatypes as values.
+    }
+    class WitnessListCredential {
+        credentialSubject
+    }
+    class WitnessList {
+        witnessSeed : string
+        witnessLength : positiveInteger
+        witnessCount : positiveInteger
+        encodedWitnesses : multibase
+    }
+    class WitnessListEntry {
+        witnessIndex : positiveInteger
+    }
+
+
+    WitnessListCredential --|> VerifiableCredential : subClassOf
+    WitnessListEntry --|> CredentialStatus : subClassOf
+
+    WitnessListEntry --> WitnessListCredential : witnessListCredential
+
+    WitnessListCredential --> WitnessList : credentialSubject
